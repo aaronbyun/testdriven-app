@@ -9,7 +9,7 @@ class App extends Component {
         super(props);
         this.state = {
             users: [],
-            username: '',
+            username: 'justatest',
             email: ''
         };
 
