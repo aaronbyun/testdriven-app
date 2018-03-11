@@ -2,6 +2,7 @@ import unittest
 import coverage
 from project import create_app, db
 from project.api.models import User
+from flask_migrate import MigrateCommand
 
 COV = coverage.coverage(
     branch=True, 
@@ -13,6 +14,7 @@ COV = coverage.coverage(
 COV.start()
 
 app = create_app()
+app.cli.add_command('db', MigrateCommand)
 
 @app.cli.command('hello')
 def hello():
@@ -34,7 +36,7 @@ def test():
     return 1
 
 @app.cli.command()
-def seed():
+def seed_db():
     db.session.add(User(username='aaron', email='aaron@gmail.com'))
     db.session.add(User(username='jeff', email='jeff@gmail.com'))
     db.session.commit()
