@@ -5,7 +5,7 @@ from sqlalchemy.orm.exc import MultipleResultsFound
 from project.api.models import User
 from project import db
 
-users_blueprint = Blueprint('usres', __name__, template_folder='./templates')
+users_blueprint = Blueprint('users', __name__, template_folder='./templates')
 
 @users_blueprint.route('/users/ping', methods=['GET'])
 def ping_pong():
